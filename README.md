@@ -1,1 +1,3 @@
 # PygameDP
+
+Lina Furukawa Queiroz 
