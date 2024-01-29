@@ -13,24 +13,24 @@ def carrega_arquivos():
     dicionario_de_arquivos = {}
     dicionario_de_arquivos['btn'] = pygame.image.load(os.path.join(IMG_DIR, 'btn1.png')).convert()
 
-    larg_tela = 60
-    alt_tela = 60
+    larg_imagem = 60
+    alt_imagem = 60
 
 
     dicionario_de_arquivos[CHERRIES] = pygame.image.load(os.path.join(IMG_DIR, 'cherries.png')).convert_alpha()
-    dicionario_de_arquivos[CHERRIES] = pygame.transform.scale (dicionario_de_arquivos[CHERRIES], (larg_tela, alt_tela))
+    dicionario_de_arquivos[CHERRIES] = pygame.transform.scale (dicionario_de_arquivos[CHERRIES], (larg_imagem, alt_imagem))
 
     dicionario_de_arquivos[FLOWER] = pygame.image.load(os.path.join(IMG_DIR, 'flower.png')).convert_alpha()
-    dicionario_de_arquivos[FLOWER] = pygame.transform.scale (dicionario_de_arquivos[FLOWER], (larg_tela, alt_tela))
+    dicionario_de_arquivos[FLOWER] = pygame.transform.scale (dicionario_de_arquivos[FLOWER], (larg_imagem, alt_imagem))
 
     dicionario_de_arquivos[TREE] = pygame.image.load(os.path.join(IMG_DIR, 'tree.png')).convert_alpha()
-    dicionario_de_arquivos[TREE] = pygame.transform.scale (dicionario_de_arquivos[TREE], (larg_tela, alt_tela))
+    dicionario_de_arquivos[TREE] = pygame.transform.scale (dicionario_de_arquivos[TREE], (larg_imagem, alt_imagem))
 
     dicionario_de_arquivos[FRUIT] = pygame.image.load(os.path.join(IMG_DIR, 'fruit-tree.png')).convert_alpha()
-    dicionario_de_arquivos[FRUIT] =  pygame.transform.scale (dicionario_de_arquivos[FRUIT], (larg_tela, alt_tela))
+    dicionario_de_arquivos[FRUIT] =  pygame.transform.scale (dicionario_de_arquivos[FRUIT], (larg_imagem, alt_imagem))
 
     dicionario_de_arquivos[LADYBUG] = pygame.image.load(os.path.join(IMG_DIR, 'fruit-tree.png')).convert_alpha()
-    dicionario_de_arquivos[LADYBUG] = pygame.transform.scale (dicionario_de_arquivos[LADYBUG], (larg_tela, alt_tela))
+    dicionario_de_arquivos[LADYBUG] = pygame.transform.scale (dicionario_de_arquivos[LADYBUG], (larg_imagem, alt_imagem))
 
 
     #mudando tamanho das imagens
