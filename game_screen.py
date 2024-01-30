@@ -77,6 +77,14 @@ def game_screen(window):
             text_rect.centery = HEIGHT / 2 - 100
             window.blit(text_surface, text_rect)
 
+            pontuacao = '0'
+
+            text_pontuacao = dicionario_de_arquivos['font'].render(pontuacao, True, BLUE)
+            text_pont_rect = text_pontuacao.get_rect()
+            text_pont_rect.centerx = WIDTH / 2
+            text_pont_rect.centery = HEIGHT - 50
+            window.blit(text_pontuacao, text_pont_rect)
+
             # Adiciona a imagem do tipo que apareceu
 
             window.blit(sorteada["imagem"], (WIDTH / 2 + 100, HEIGHT / 2 - 130))
@@ -104,6 +112,9 @@ def game_screen(window):
                 text_rect.centerx = WIDTH / 2
                 text_rect.centery = HEIGHT / 2 + 100
                 window.blit(text_surface, text_rect)
+
+              
+
 
 
 
