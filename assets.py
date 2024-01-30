@@ -32,6 +32,12 @@ def carrega_arquivos():
     dicionario_de_arquivos[LADYBUG] = pygame.image.load(os.path.join(IMG_DIR, 'ladybug.png')).convert_alpha()
     dicionario_de_arquivos[LADYBUG] = pygame.transform.scale (dicionario_de_arquivos[LADYBUG], (larg_imagem, alt_imagem))
 
+    # sons 
+
+    dicionario_de_arquivos['good_sound'] = pygame.mixer.Sound(os.path.join(SND_DIR,'yeah-boy-114748.mp3'))    # quando o jogador acerta a quantidade
+    dicionario_de_arquivos['final_sound'] = pygame.mixer.Sound(os.path.join(SND_DIR,'ragtime-logo-standard-version-116100.mp3')) 
+    dicionario_de_arquivos['game_sound'] = pygame.mixer.Sound(os.path.join(SND_DIR,'funny-and-comical-melody-glide-synth-bass-and-trumpet-21398.mp3')) 
+    
 
     #mudando tamanho das imagens
     largura = dicionario_de_arquivos['btn'].get_rect().width * .25
@@ -45,3 +51,5 @@ def carrega_arquivos():
     dicionario_de_arquivos['font'] = pygame.font.Font(os.path.join(FNT_DIR, 'PressStart2P.ttf'), 22)
     dicionario_de_arquivos['font_media'] = pygame.font.Font(os.path.join(FNT_DIR, 'PressStart2P.ttf'), 30)
     return dicionario_de_arquivos
+
+    
