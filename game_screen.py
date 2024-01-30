@@ -17,8 +17,7 @@ def game_screen(window):
     tela = 'azul'
     tempo_da_ultima_mudanca = pygame.time.get_ticks()
 
-    lista_imagens = gerar_imagens(3)
-
+    lista_imagens = gerar_imagens(2)
     resposta_jogador = ''
 
     # ===== Loop principal =====
@@ -50,10 +49,13 @@ def game_screen(window):
             window.fill(BLUE)
 
             sorteada = random.choice(lista_imagens)
+            resposta_jogador = ''
 
             # Desenha as imagens na tela
             for imagem in lista_imagens:
                 window.blit(imagem["imagem"], (imagem["posicao_x"], imagem["posicao_y"]))
+
+
         else:
             window.fill(RED)
             # Dimensões do retângulo
@@ -83,6 +85,22 @@ def game_screen(window):
             text_rect.centerx = WIDTH / 2
             text_rect.centery = HEIGHT / 2
             window.blit(text_surface, text_rect)
+
+            # Verifica se o jogador acertou a quantidade de imagens
+            if resposta_jogador == str(lista_imagens.count(sorteada)):
+                text_surface = dicionario_de_arquivos['font'].render('Acertou!', True, BLUE)
+                text_rect = text_surface.get_rect()
+                text_rect.centerx = WIDTH / 2
+                text_rect.centery = HEIGHT / 2 + 100
+                window.blit(text_surface, text_rect)
+            else:
+                text_surface = dicionario_de_arquivos['font'].render('Errou!', True, BLUE)
+                text_rect = text_surface.get_rect()
+                text_rect.centerx = WIDTH / 2
+                text_rect.centery = HEIGHT / 2 + 100
+                window.blit(text_surface, text_rect)
+
+
 
         pygame.display.update()  # Mostra o novo frame para o jogador
 
