@@ -29,7 +29,7 @@ def game_screen(window):
     dicionario_de_arquivos['game_sound'].play(loops=-1)
 
     # ===== Loop principal =====
-    while state != DONE:
+    while state != DONE and state != "ending":
         clock.tick(FPS)
 
         # ----- Trata eventos
@@ -63,7 +63,7 @@ def game_screen(window):
                         state = "ending"
                         dicionario_de_arquivos['final_sound'].play()
                         pygame.time.wait(3000)
-                        return state
+                       
     
                 lista_imagens = gerar_imagens(n)
 
@@ -81,6 +81,10 @@ def game_screen(window):
                 window.blit(imagem["imagem"], (imagem["posicao_x"], imagem["posicao_y"]))
 
         else:
+
+            if vidas == 0:
+                state = "ending"
+
             window.fill(WHITE)
             # Dimensões do retângulo
             rect_width = WIDTH / 2
@@ -101,7 +105,7 @@ def game_screen(window):
             window.blit(text_surface, text_rect)
 
             # Adiciona a imagem do tipo que apareceu
-            window.blit(sorteada["imagem"], (WIDTH / 2 + 100, HEIGHT / 2 - 130))
+            window.blit(sorteada["imagem"], (WIDTH / 2 + 100, HEIGHT / 2 - 150))
 
             text_surface = dicionario_de_arquivos['font'].render(resposta_jogador, True, BLUE)
             text_rect = text_surface.get_rect()
@@ -118,6 +122,8 @@ def game_screen(window):
         coracao_surface = dicionario_de_arquivos['font_media'].render(chr(9829) * vidas, True, (255, 0, 0))
         coracao_rect = coracao_surface.get_rect()
         window.blit(coracao_surface, (20,20))
+
+
         
         pygame.display.update()  # Mostra o novo frame para o jogador
 

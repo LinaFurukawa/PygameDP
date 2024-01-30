@@ -12,14 +12,17 @@ pygame.mixer.init()
 
 # ----- Gera tela principal
 window = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Nome do seu jogo')
+pygame.display.set_caption('Contagem da Natureza !')
 
 state = INIT
 while state != QUIT:
     if state == INIT:
         state = init_screen(window)
     elif state == GAME:
-        state = game_screen(window)
+
+        state, pontuacao = game_screen(window)
+
+        print (state)
     elif state == "ending":
         pontuacao = game_screen(window)[1]
         state = end_game(window, pontuacao)
