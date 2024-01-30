@@ -19,6 +19,7 @@ def game_screen(window):
 
     n = 1
     lista_imagens = gerar_imagens(n)
+    sorteada = random.choice(lista_imagens)
     resposta_jogador = ''
     pontuacao = 0
 
@@ -46,15 +47,17 @@ def game_screen(window):
                 
             else:
                 tela = 'azul'
-                resposta_jogador = ''
+
+                if resposta_jogador == str(conta_sorteada(lista_imagens, sorteada)):
+                    pontuacao += 100
+    
                 lista_imagens = gerar_imagens(n)
                 n += 1
+                resposta_jogador = ''
+                sorteada = random.choice(lista_imagens)
 
         if tela == 'azul':
-            window.fill(BLUE)
-
-            sorteada = random.choice(lista_imagens)
-
+    
             # Desenha as imagens na tela
             for imagem in lista_imagens:
                 window.blit(imagem["imagem"], (imagem["posicao_x"], imagem["posicao_y"]))
@@ -79,12 +82,6 @@ def game_screen(window):
             text_rect.centery = HEIGHT / 2 - 100
             window.blit(text_surface, text_rect)
 
-            text_pontuacao = dicionario_de_arquivos['font'].render(str(pontuacao), True, BLUE)
-            text_pont_rect = text_pontuacao.get_rect()
-            text_pont_rect.centerx = WIDTH / 2
-            text_pont_rect.centery = HEIGHT - 50
-            window.blit(text_pontuacao, text_pont_rect)
-
             # Adiciona a imagem do tipo que apareceu
             window.blit(sorteada["imagem"], (WIDTH / 2 + 100, HEIGHT / 2 - 130))
 
@@ -102,8 +99,6 @@ def game_screen(window):
                 text_rect.centery = HEIGHT / 2 + 100
                 window.blit(text_surface, text_rect)
 
-                pontuacao += 100
-
             else:
                 text_surface = dicionario_de_arquivos['font'].render('Errou!', True, BLUE)
                 text_rect = text_surface.get_rect()
@@ -111,6 +106,12 @@ def game_screen(window):
                 text_rect.centery = HEIGHT / 2 + 100
                 window.blit(text_surface, text_rect)
 
+        text_pontuacao = dicionario_de_arquivos['font'].render(str(pontuacao), True, BLUE)
+        text_pont_rect = text_pontuacao.get_rect()
+        text_pont_rect.centerx = WIDTH / 2
+        text_pont_rect.centery = HEIGHT - 50
+        window.blit(text_pontuacao, text_pont_rect)
+        
         pygame.display.update()  # Mostra o novo frame para o jogador
 
     return state
