@@ -25,6 +25,9 @@ def game_screen(window):
     pontuacao = 0
     vidas = 3
 
+    # Adiciona o som do jogo
+    dicionario_de_arquivos['game_sound'].play(loops=-1)
+
     # ===== Loop principal =====
     while state != DONE:
         clock.tick(FPS)
@@ -51,13 +54,23 @@ def game_screen(window):
                 tela = 'azul'
 
                 if resposta_jogador == str(conta_sorteada(lista_imagens, sorteada)):
+                    dicionario_de_arquivos['good_sound'].play()
                     pontuacao += 100
-                
                 else:
+                    dicionario_de_arquivos['bad_sound'].play()
                     vidas -= 1
+                    if vidas == 0:
+                        state = DONE
+                        dicionario_de_arquivos['final_sound'].play()
+                        pygame.time.wait(3000)
+                        return DONE
     
                 lista_imagens = gerar_imagens(n)
+
                 n += 1
+                if n > 5:
+                    n = 5
+
                 resposta_jogador = ''
                 sorteada = random.choice(lista_imagens)
 
@@ -96,23 +109,6 @@ def game_screen(window):
             text_rect.centery = HEIGHT / 2
             window.blit(text_surface, text_rect)
 
-            # Verifica se o jogador acertou a quantidade de imagens
-            if resposta_jogador == str(conta_sorteada(lista_imagens, sorteada)):
-                text_surface = dicionario_de_arquivos['font'].render('Acertou!', True, BLUE)
-                text_rect = text_surface.get_rect()
-                text_rect.centerx = WIDTH / 2
-                text_rect.centery = HEIGHT / 2 + 100
-                window.blit(text_surface, text_rect)
-                dicionario_de_arquivos['good_sound'].play()
-                
-
-            else:
-                text_surface = dicionario_de_arquivos['font'].render('Errou!', True, BLUE)
-                text_rect = text_surface.get_rect()
-                text_rect.centerx = WIDTH / 2
-                text_rect.centery = HEIGHT / 2 + 100
-                window.blit(text_surface, text_rect)
-
         text_pontuacao = dicionario_de_arquivos['font'].render(str(pontuacao), True, BLUE)
         text_pont_rect = text_pontuacao.get_rect()
         text_pont_rect.centerx = WIDTH / 2
@@ -122,8 +118,6 @@ def game_screen(window):
         coracao_surface = dicionario_de_arquivos['font_media'].render(chr(9829) * vidas, True, (255, 0, 0))
         coracao_rect = coracao_surface.get_rect()
         window.blit(coracao_surface, (20,20))
-        
-
         
         pygame.display.update()  # Mostra o novo frame para o jogador
 

@@ -71,20 +71,18 @@ def gerar_imagens(x):
 
     return lista_imagens
 
+
 def conta_sorteada (lista_imagens, sorteada):
 
     contagem = 0
-
     tipo_sorteada = sorteada["tipo"]
 
     for dic in lista_imagens:
-
         tipo = dic["tipo"]
 
         if tipo == tipo_sorteada:
-
             contagem += 1
-    
+
     return contagem
 
 
