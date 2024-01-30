@@ -23,6 +23,7 @@ def game_screen(window):
     sorteada = random.choice(lista_imagens)
     resposta_jogador = ''
     pontuacao = 0
+    vidas = 3
 
     # ===== Loop principal =====
     while state != DONE:
@@ -51,6 +52,9 @@ def game_screen(window):
 
                 if resposta_jogador == str(conta_sorteada(lista_imagens, sorteada)):
                     pontuacao += 100
+                
+                else:
+                    vidas -= 1
     
                 lista_imagens = gerar_imagens(n)
                 n += 1
@@ -114,6 +118,12 @@ def game_screen(window):
         text_pont_rect.centerx = WIDTH / 2
         text_pont_rect.centery = HEIGHT - 50
         window.blit(text_pontuacao, text_pont_rect)
+
+        coracao_surface = dicionario_de_arquivos['font_media'].render(chr(9829) * vidas, True, (255, 0, 0))
+        coracao_rect = coracao_surface.get_rect()
+        window.blit(coracao_surface, (20,20))
+        
+
         
         pygame.display.update()  # Mostra o novo frame para o jogador
 
