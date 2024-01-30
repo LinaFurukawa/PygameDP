@@ -1,6 +1,7 @@
 import pygame
 from config import FPS, WIDTH, HEIGHT, BLACK, BLUE, RED, WHITE
 from assets import carrega_arquivos
+from config import SND_DIR
 from funcoes import gerar_imagens,  conta_sorteada
 import random
 
@@ -98,6 +99,8 @@ def game_screen(window):
                 text_rect.centerx = WIDTH / 2
                 text_rect.centery = HEIGHT / 2 + 100
                 window.blit(text_surface, text_rect)
+                dicionario_de_arquivos['good_sound'].play()
+                
 
             else:
                 text_surface = dicionario_de_arquivos['font'].render('Errou!', True, BLUE)
