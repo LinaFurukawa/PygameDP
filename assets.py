@@ -5,7 +5,7 @@ from config import IMG_DIR, SND_DIR, FNT_DIR
 CHERRIES = 'cherries'
 FLOWER = 'flower'
 TREE = 'tree'
-FRUIT = 'fruit'
+FRUIT = 'fruit-tree'
 LADYBUG = 'ladybug'
 
 

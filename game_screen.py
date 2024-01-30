@@ -1,6 +1,7 @@
 import pygame
 from config import FPS, WIDTH, HEIGHT, BLACK, BLUE, RED
 from assets import carrega_arquivos
+from funcoes import gerar_imagens
 
 def game_screen(window):
     # Variável para o ajuste de velocidade
@@ -14,6 +15,8 @@ def game_screen(window):
 
     tela = 'azul'
     tempo_da_ultima_mudanca = pygame.time.get_ticks()
+
+    lista_imagens = gerar_imagens(1)
 
     # ===== Loop principal =====
     while state != DONE:
@@ -39,6 +42,9 @@ def game_screen(window):
 
         if tela == 'azul':
             window.fill(BLUE)
+            # Desenha as imagens na tela
+            for imagem in lista_imagens:
+                window.blit(imagem["imagem"], (imagem["posicao_x"], imagem["posicao_y"]))
         else:
             window.fill(RED)
 
