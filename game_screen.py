@@ -31,7 +31,7 @@ def game_screen(window):
                 state = DONE
             if event.type == pygame.KEYDOWN:
                 resposta_jogador += event.unicode
-                print(resposta_jogador)
+                
 
         # ----- Gera saídas
         window.fill(BLACK)  # Preenche com a cor branca
@@ -49,7 +49,7 @@ def game_screen(window):
             window.fill(BLUE)
 
             sorteada = random.choice(lista_imagens)
-            #print (sorteada)
+            
             resposta_jogador = ''
 
             # Desenha as imagens na tela
@@ -89,13 +89,15 @@ def game_screen(window):
 
             # Verifica se o jogador acertou a quantidade de imagens
             contagem = str(conta_sorteada(lista_imagens, sorteada))
-            #print(contagem)
+            
             if resposta_jogador == contagem:
                 text_surface = dicionario_de_arquivos['font'].render('Acertou!', True, BLUE)
                 text_rect = text_surface.get_rect()
                 text_rect.centerx = WIDTH / 2
                 text_rect.centery = HEIGHT / 2 + 100
                 window.blit(text_surface, text_rect)
+
+
             else:
                 text_surface = dicionario_de_arquivos['font'].render('Errou!', True, BLUE)
                 text_rect = text_surface.get_rect()
