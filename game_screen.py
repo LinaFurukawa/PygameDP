@@ -20,6 +20,8 @@ def game_screen(window):
     lista_imagens = gerar_imagens(2)
     resposta_jogador = ''
 
+    pontuacao = 0
+
     # ===== Loop principal =====
     while state != DONE:
         clock.tick(FPS)
@@ -77,9 +79,7 @@ def game_screen(window):
             text_rect.centery = HEIGHT / 2 - 100
             window.blit(text_surface, text_rect)
 
-            pontuacao = '0'
-
-            text_pontuacao = dicionario_de_arquivos['font'].render(pontuacao, True, BLUE)
+            text_pontuacao = dicionario_de_arquivos['font'].render(str(pontuacao), True, BLUE)
             text_pont_rect = text_pontuacao.get_rect()
             text_pont_rect.centerx = WIDTH / 2
             text_pont_rect.centery = HEIGHT - 50
@@ -104,6 +104,12 @@ def game_screen(window):
                 text_rect.centerx = WIDTH / 2
                 text_rect.centery = HEIGHT / 2 + 100
                 window.blit(text_surface, text_rect)
+
+                pontuacao += 100
+
+                
+
+
 
 
             else:
