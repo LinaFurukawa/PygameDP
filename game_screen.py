@@ -60,10 +60,10 @@ def game_screen(window):
                     dicionario_de_arquivos['bad_sound'].play()
                     vidas -= 1
                     if vidas == 0:
-                        state = DONE
+                        state = "ending"
                         dicionario_de_arquivos['final_sound'].play()
                         pygame.time.wait(3000)
-                        return DONE
+                        return state
     
                 lista_imagens = gerar_imagens(n)
 
@@ -121,4 +121,4 @@ def game_screen(window):
         
         pygame.display.update()  # Mostra o novo frame para o jogador
 
-    return state
+    return state, pontuacao
