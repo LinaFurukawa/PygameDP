@@ -2,6 +2,7 @@ import random
 from assets import carrega_arquivos
 from config import WIDTH, HEIGHT
 
+
 def colisao_entre_retangulos(r1_x,r1_y,r1_w,r1_h,r2_x,r2_y,r2_w,r2_h):
 
     # Verificar se os retângulos colidem
@@ -47,7 +48,7 @@ def gerar_imagens(x):
 
             imagem = {
                 "imagem": dicionario_de_arquivos[imagem_selecionada[i]],
-                "tipo": imagem_selecionada,
+                "tipo": imagem_selecionada[i],
                 "posicao_x": posicao_x,
                 "posicao_y": posicao_y
             }
@@ -60,7 +61,7 @@ def gerar_imagens(x):
 
                 imagem = {
                 "imagem": dicionario_de_arquivos[imagem_selecionada[i]],
-                "tipo": imagem_selecionada,
+                "tipo": imagem_selecionada[i],
                 "posicao_x": posicao_x,
                 "posicao_y": posicao_y
                 }
@@ -69,3 +70,23 @@ def gerar_imagens(x):
             lista_imagens.append(imagem)
 
     return lista_imagens
+
+def conta_sorteada (lista_imagens, sorteada):
+
+    contagem = 0
+
+    tipo_sorteada = sorteada["tipo"]
+
+    for dic in lista_imagens:
+
+        tipo = dic["tipo"]
+
+        if tipo == tipo_sorteada:
+
+            contagem += 1
+    
+    return contagem
+
+
+
+

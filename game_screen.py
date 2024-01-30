@@ -1,7 +1,7 @@
 import pygame
 from config import FPS, WIDTH, HEIGHT, BLACK, BLUE, RED
 from assets import carrega_arquivos
-from funcoes import gerar_imagens
+from funcoes import gerar_imagens,  conta_sorteada
 import random
 
 def game_screen(window):
@@ -49,6 +49,7 @@ def game_screen(window):
             window.fill(BLUE)
 
             sorteada = random.choice(lista_imagens)
+            #print (sorteada)
             resposta_jogador = ''
 
             # Desenha as imagens na tela
@@ -87,7 +88,9 @@ def game_screen(window):
             window.blit(text_surface, text_rect)
 
             # Verifica se o jogador acertou a quantidade de imagens
-            if resposta_jogador == str(lista_imagens.count(sorteada)):
+            contagem = str(conta_sorteada(lista_imagens, sorteada))
+            #print(contagem)
+            if resposta_jogador == contagem:
                 text_surface = dicionario_de_arquivos['font'].render('Acertou!', True, BLUE)
                 text_rect = text_surface.get_rect()
                 text_rect.centerx = WIDTH / 2
