@@ -29,7 +29,7 @@ def carrega_arquivos():
     dicionario_de_arquivos[FRUIT] = pygame.image.load(os.path.join(IMG_DIR, 'fruit-tree.png')).convert_alpha()
     dicionario_de_arquivos[FRUIT] =  pygame.transform.scale (dicionario_de_arquivos[FRUIT], (larg_imagem, alt_imagem))
 
-    dicionario_de_arquivos[LADYBUG] = pygame.image.load(os.path.join(IMG_DIR, 'fruit-tree.png')).convert_alpha()
+    dicionario_de_arquivos[LADYBUG] = pygame.image.load(os.path.join(IMG_DIR, 'ladybug.png')).convert_alpha()
     dicionario_de_arquivos[LADYBUG] = pygame.transform.scale (dicionario_de_arquivos[LADYBUG], (larg_imagem, alt_imagem))
 
 
