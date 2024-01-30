@@ -2,6 +2,7 @@ import pygame
 from config import FPS, WIDTH, HEIGHT, BLACK, BLUE, RED
 from assets import carrega_arquivos
 from funcoes import gerar_imagens
+import random
 
 def game_screen(window):
     # Variável para o ajuste de velocidade
@@ -16,7 +17,7 @@ def game_screen(window):
     tela = 'azul'
     tempo_da_ultima_mudanca = pygame.time.get_ticks()
 
-    lista_imagens = gerar_imagens(1)
+    lista_imagens = gerar_imagens(3)
 
     resposta_jogador = ''
 
@@ -47,6 +48,9 @@ def game_screen(window):
 
         if tela == 'azul':
             window.fill(BLUE)
+
+            sorteada = random.choice(lista_imagens)
+
             # Desenha as imagens na tela
             for imagem in lista_imagens:
                 window.blit(imagem["imagem"], (imagem["posicao_x"], imagem["posicao_y"]))
@@ -71,7 +75,8 @@ def game_screen(window):
             window.blit(text_surface, text_rect)
 
             # Adiciona a imagem do tipo que apareceu
-            window.blit(lista_imagens[0]["imagem"], (WIDTH / 2 + 100, HEIGHT / 2 - 130))
+
+            window.blit(sorteada["imagem"], (WIDTH / 2 + 100, HEIGHT / 2 - 130))
 
             text_surface = dicionario_de_arquivos['font'].render(resposta_jogador, True, BLUE)
             text_rect = text_surface.get_rect()
