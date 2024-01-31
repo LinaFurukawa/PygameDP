@@ -41,11 +41,15 @@ def end_game (window, pontuacao):
 
         pontuacao_final_escrito = fonte.render("Pontuação:", True, RED)
 
-        window.blit(pontuacao_final_escrito, (WIDTH/2 - 200, HEIGHT/2 - 200))
+        window.blit(pontuacao_final_escrito, (WIDTH/2 - 200, HEIGHT/2 - 300))
 
         pontuacao_final = fonte.render(str(pontuacao), True, RED)
 
-        window.blit(pontuacao_final, (WIDTH/2 - 170, HEIGHT/2 - 100))
+        window.blit(pontuacao_final, (WIDTH/2 - 170, HEIGHT/2 - 200))
+
+        ranking_titulo = fonte.render("Ranking:", True, BLUE)
+
+        window.blit(ranking_titulo, (WIDTH/2 - 200, HEIGHT/2 - 100 ))
 
         pygame.display.update()
 
