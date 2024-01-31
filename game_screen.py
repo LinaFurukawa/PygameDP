@@ -11,12 +11,10 @@ def game_screen(window):
 
     dicionario_de_arquivos = carrega_arquivos()
 
-    DONE = 0
-    PLAYING = 1
-    state = PLAYING
-
     tela = 'azul'
     tempo_da_ultima_mudanca = pygame.time.get_ticks()
+
+    DONE = 0
 
     n = 1
     lista_imagens = gerar_imagens(n)
@@ -28,15 +26,19 @@ def game_screen(window):
     # Adiciona o som do jogo
     dicionario_de_arquivos['game_sound'].play(loops=-1)
 
+    running = True
+
     # ===== Loop principal =====
-    while state != DONE and state != "ending":
+    while running:
         clock.tick(FPS)
 
         # ----- Trata eventos
         for event in pygame.event.get():
             # ----- Verifica consequências
             if event.type == pygame.QUIT:
-                state = DONE
+                state = 'done'
+                running = False
+                break
             if event.type == pygame.KEYDOWN:
                 resposta_jogador += event.unicode
                 
@@ -59,10 +61,15 @@ def game_screen(window):
                 else:
                     dicionario_de_arquivos['bad_sound'].play()
                     vidas -= 1
+
                     if vidas == 0:
+                        
                         state = "ending"
                         dicionario_de_arquivos['final_sound'].play()
                         pygame.time.wait(3000)
+
+                        running = False
+                        break
                        
     
                 lista_imagens = gerar_imagens(n)
@@ -81,9 +88,6 @@ def game_screen(window):
                 window.blit(imagem["imagem"], (imagem["posicao_x"], imagem["posicao_y"]))
 
         else:
-
-            if vidas == 0:
-                state = "ending"
 
             window.fill(WHITE)
             # Dimensões do retângulo

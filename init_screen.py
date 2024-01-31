@@ -53,15 +53,15 @@ def init_screen(screen):
                 state = QUIT
                 running = False
 
-            if event.type == pygame.KEYUP:
+            elif event.type == pygame.KEYUP:
                 state = GAME
                 running = False
             
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            elif event.type == pygame.MOUSEBUTTONDOWN:
                 state = GAME
                 running = False
 
-            if event.type == pygame.MOUSEMOTION:
+            elif event.type == pygame.MOUSEMOTION:
                 #Alterando cor do botão
                 for btn in all_buttons:
                     if btn.rect.collidepoint(event.pos):

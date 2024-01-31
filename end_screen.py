@@ -26,14 +26,16 @@ def end_game (window, pontuacao):
 
     fonte = pygame.font.Font(None, 75)
 
-    while state != DONE:
+    while state != 'done':
 
         clock.tick(FPS)
 
         for event in pygame.event.get():
            
             if event.type == pygame.QUIT:
-                state = DONE
+                state = 'done'
+                
+            
         
         window.fill(BLACK)
 
