@@ -1,4 +1,6 @@
 import pygame
+import os
+from config import IMG_DIR
 
 class Botao(pygame.sprite.Sprite):
     def __init__(self, assets, nome_do_jogo):
@@ -25,4 +27,38 @@ class Botao(pygame.sprite.Sprite):
         else:
             self.image = self.assets['btn']
 
+class Cherry(pygame.sprite.Sprite):
+    def __init__(self, position):
+        super().__init__()
+        self.image = pygame.image.load(os.path.join(IMG_DIR, 'cherries.png')).convert_alpha()
+        self.image = pygame.transform.scale(self.image, (60, 60))  # Redimensiona a imagem
+        self.rect = self.image.get_rect(topleft=position)
+
+class Flower(pygame.sprite.Sprite):
+    def __init__(self, position):
+        super().__init__()
+        self.image = pygame.image.load(os.path.join(IMG_DIR, 'flower.png')).convert_alpha()
+        self.image = pygame.transform.scale(self.image, (60, 60))  # Redimensiona a imagem
+        self.rect = self.image.get_rect(topleft=position)
     
+class Tree(pygame.sprite.Sprite):
+    def __init__(self, position):
+        super().__init__()
+        self.image = pygame.image.load(os.path.join(IMG_DIR, 'tree.png')).convert_alpha()
+        self.image = pygame.transform.scale(self.image, (60, 60))  # Redimensiona a imagem
+        self.rect = self.image.get_rect(topleft=position)
+
+class Fruit(pygame.sprite.Sprite):
+    def __init__(self, position):
+        super().__init__()
+        self.image = pygame.image.load(os.path.join(IMG_DIR, 'fruit-tree.png')).convert_alpha()
+        self.image = pygame.transform.scale(self.image, (60, 60))  # Redimensiona a imagem
+        self.rect = self.image.get_rect(topleft=position)
+
+class Ladybug(pygame.sprite.Sprite):
+    def __init__(self, position):
+        super().__init__()
+        self.image = pygame.image.load(os.path.join(IMG_DIR, 'ladybug.png')).convert_alpha()
+        self.image = pygame.transform.scale(self.image, (60, 60))  # Redimensiona a imagem
+        self.rect = self.image.get_rect(topleft=position)
+
