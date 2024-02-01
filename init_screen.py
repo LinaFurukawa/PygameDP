@@ -68,7 +68,6 @@ def init_screen(screen):
                         btn.mouse_over(True)
                     else:
                         btn.mouse_over(False)
-            
 
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)

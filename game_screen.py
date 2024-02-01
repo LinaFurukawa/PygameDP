@@ -1,8 +1,7 @@
 import pygame
 from config import FPS, WIDTH, HEIGHT, BLACK, BLUE, RED, WHITE
 from assets import carrega_arquivos
-from config import SND_DIR
-from funcoes import gerar_imagens,  conta_sorteada
+from funcoes import gerar_imagens, conta_sorteada, salvar_pontuacao
 import random
 
 def game_screen(window):
@@ -60,11 +59,11 @@ def game_screen(window):
                     dicionario_de_arquivos['bad_sound'].play()
                     vidas -= 1
                     if vidas == 0:
+                        salvar_pontuacao(pontuacao)
                         state = "ending"
                         dicionario_de_arquivos['final_sound'].play()
                         pygame.time.wait(3000)
                        
-    
                 lista_imagens = gerar_imagens(n)
 
                 n += 1
@@ -122,8 +121,6 @@ def game_screen(window):
         coracao_surface = dicionario_de_arquivos['font_media'].render(chr(9829) * vidas, True, (255, 0, 0))
         coracao_rect = coracao_surface.get_rect()
         window.blit(coracao_surface, (20,20))
-
-
         
         pygame.display.update()  # Mostra o novo frame para o jogador
 

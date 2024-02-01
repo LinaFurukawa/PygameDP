@@ -19,12 +19,8 @@ while state != QUIT:
     if state == INIT:
         state = init_screen(window)
     elif state == GAME:
-
         state, pontuacao = game_screen(window)
-
-        print (state)
     elif state == "ending":
-        pontuacao = game_screen(window)[1]
         state = end_game(window, pontuacao)
     else:
         state = QUIT
